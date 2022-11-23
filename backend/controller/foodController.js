@@ -1,5 +1,6 @@
 const Food = require('../models/FoodModel')
 
+
 // add new food item
 exports.addFood = async (req, res) => {
     let food = new Food({
@@ -11,7 +12,7 @@ exports.addFood = async (req, res) => {
     })
     food = await food.save()
     if (!food) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json({ error: "Something went wrong." })
     }
     res.send(food)
 }
@@ -20,7 +21,7 @@ exports.addFood = async (req, res) => {
 exports.viewfoods = async (req, res) => {
     let foods = await Food.find().populate('category', 'category_name')
     if (!foods) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json({ error: "Something went wrong." })
     }
     res.send(foods)
 }
@@ -29,10 +30,12 @@ exports.viewfoods = async (req, res) => {
 exports.foodDetails = async (req, res) => {
     let food = await Food.findById(req.params.id).populate('category', 'category_name')
     if (!food) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json({ error: "Something went wrong." })
     }
     res.send(food)
 }
+
+
 // update food
 exports.updatefood = async (req, res) => {
     let food = await Food.findByIdAndUpdate(req.params.id, {
@@ -43,7 +46,7 @@ exports.updatefood = async (req, res) => {
     },
         { new: true })
     if (!food) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json({ error: "Something went wrong." })
     }
     res.send(food)
 }
@@ -52,27 +55,26 @@ exports.updatefood = async (req, res) => {
 exports.deletefood = async (req, res) => {
     let food = await Food.findByIdAndDelete(req.params.id)
     if (!food) {
-        return res.status(400).json({ error: "food item not found" })
+        return res.status(400).json({ error: "food item not found." })
     }
-    return res.status(200).json({ message: "food item deleted successfully" })
+    return res.status(200).json({ message: "food item deleted successfully." })
 }
 
 // find by category
 exports.findfoodbyCategory = async (req, res) => {
     let foods = await Food.find({ category: req.params.category_id })
     if (!foods) {
-        return res.status(400).json({ error: "Something went wrong" })
+        return res.status(400).json({ error: "Something went wrong." })
     }
     res.send(foods)
 }
 
 // filter food
 exports.filterfood = async (req, res) => {
-
     if (!req.body.categoryId) {
         let foods = await Food.find({}).populate('category', 'category_name').sort([['food_name', 'asc']])
         if (!foods) {
-            return res.status(400).json({ error: "Something went wrong" })
+            return res.status(400).json({ error: "Something went wrong." })
         }
         return res.status(200).send(foods)
 
@@ -80,7 +82,7 @@ exports.filterfood = async (req, res) => {
     else {
         let filteredfoods = await Food.find({ category: req.body.categoryId }).populate('category', 'category_name').sort([['food_name', 'asc']])
         if (!filteredfoods) {
-            return res.status(400).json({ error: "Something went wrong" })
+            return res.status(400).json({ error: "Something went wrong." })
         }
         return res.status(200).send(filteredfoods)
     }

@@ -9,14 +9,13 @@ exports.addCategory = async (req, res) => {
         })
         category = await category.save()
         if(!category){
-            return res.status(400).json({error: "something went wrong"})
+            return res.status(400).json({error: "something went wrong."})
         }
         res.send(category)
     }
     else{
         return res.status(400).json({error: "Category already exists."})
-    }
-    
+    }   
 }
 
 
@@ -24,7 +23,7 @@ exports.addCategory = async (req, res) => {
 exports.viewCategories = async(req, res) => {
     let categories = await Category.find()
     if(!categories){
-        return res.status(400).json({error:"something went wrong"})
+        return res.status(400).json({error:"something went wrong."})
     }
     res.send(categories)
 }
@@ -33,7 +32,7 @@ exports.viewCategories = async(req, res) => {
 exports.categoryDetails = async(req,res) => {
     let category = await Category.findById(req.params.id)
     if(!category){
-        return res.status(400).json({error:"something went wrong"})
+        return res.status(400).json({error:"something went wrong."})
     }
     res.send(category)
 }
@@ -48,7 +47,7 @@ exports.updateCategory = async (req,res) => {
     })
     if(!category){
         return res.status(400).json({
-            error: "something went wrong"
+            error: "something went wrong."
         })
     }
     res.send(category)
@@ -62,7 +61,7 @@ exports.deleteCategory = (req,res) => {
             return res.status(400).json({error:"Category does not exist."})
         }
         else{
-            return res.status(200).json({message:"Category deleted successfully"})
+            return res.status(200).json({message:"Category deleted successfully."})
         }
     })
     .catch(err=> res.status(400).json({error:err}))

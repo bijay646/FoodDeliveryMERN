@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { findCategory, updateCategory } from '../../../api/categoryAPI'
-import { isAuthenticated } from '../../../api/userAPI'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
+import { findCategory, updateCategory } from '../../../api/categoryAPI'
+import { isAuthenticated } from '../../../api/userAPI'
 import AdminSidebar from '../AdminSidebar'
+
 
 const UpdateCategory = () => {
     const [category, setCategory] = useState([])
@@ -65,7 +66,7 @@ const UpdateCategory = () => {
                         <Link to='/admin/category' className='btn btn-primary'>Go Back</Link>
 
                     </div>
-                    <form className='w-50 m-5 p-5 shadow-lg'>
+                    <form className='w-50 m-5 p-5 shadow'>
                         {showError()}
                         <label htmlFor='category'>Category Name</label>
                         <input type={'text'} readOnly value={category.category_name} className='form-control mb-3' />

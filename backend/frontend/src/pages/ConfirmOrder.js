@@ -25,20 +25,20 @@ const ConfirmOrder = () => {
       </div>
       <Checkout_progress />
 
-      <div className='container shadow-lg mx-auto p-5 row my-5'>
+      <div className='container shadow mx-auto p-5 row my-5'>
         <div className='col-md-8'>
           <h3 className='text-decoration-underline'>Order Details</h3>
           <div className='container mx-auto my-5'>
 
             {
               bag_items.length > 0 &&
-              <table className='table text-center table-hover table-bordered table-striped'>
+              <table className='table text-center table-hover table-striped'>
                 <thead>
                   <tr>
                     <th>S.No.</th>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
+                    <th>Food Image</th>
+                    <th>Food Name</th>
+                    <th>Food Price</th>
                     <th>Quantity</th>
                     <th>Total Price</th>
                   </tr>
@@ -49,7 +49,7 @@ const ConfirmOrder = () => {
                       return <tr key={i}>
                         <td>{i + 1}</td>
                         <td>
-                          <img src={`${API}/${item.image}`} style={{ height: "150px" }} />
+                          <img src={`${API}/${item.image}`} style={{ height: "80px" }} />
                         </td>
                         <td>{item.name}</td>
                         <td>Rs.{item.price}</td>
@@ -63,11 +63,8 @@ const ConfirmOrder = () => {
 
                     })
                   }
-
-
                 </tbody>
               </table>
-
             }
           </div>
         </div>
@@ -77,7 +74,7 @@ const ConfirmOrder = () => {
             <h4>Items: {order_items_number}</h4>
             <h4>Order Total: Rs.{order_total}</h4>
             <hr className='my-3' />
-            <Link to='/shipping' className='btn btn-warning form-control'>Proceed to Shipping</Link>
+            <Link to='/delivery' className='btn btn-warning form-control'>Proceed to Delivery</Link>
           </div>
         </div>
       </div>

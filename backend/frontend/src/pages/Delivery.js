@@ -10,7 +10,7 @@ import { saveDeliveryAddress } from '../redux/actions/bagActions'
 
 
 
-const Shipping = () => {
+const Delivery = () => {
     const { user } = isAuthenticated()
     const delivery_address = useSelector(state => state.bag.delivery_address)
     const [new_delivery_address, setNewDeliveryAddress] = useState({
@@ -41,9 +41,9 @@ const Shipping = () => {
             <div className='text-end me-5 my-2'>
                 <Link to='/bag' className='btn btn-warning'><i className="bi bi-backspace-fill"></i>Go to Bag</Link>
             </div>
-            <Checkout_progress shipping />
+            <Checkout_progress delivery />
 
-            <div className='container shadow-lg mx-auto p-5 row my-5'>
+            <div className='container shadow mx-auto p-5 row my-5'>
                 <div className='col-md-8'>
                     <h3 className='text-decoration-underline'>Delivery Information</h3>
                     <div className='container my-5 me-5'>
@@ -94,4 +94,4 @@ const Shipping = () => {
     )
 }
 
-export default Shipping
+export default Delivery

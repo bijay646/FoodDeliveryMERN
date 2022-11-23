@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import { userConfirmation } from '../api/userAPI'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import { API } from '../config'
 
 const ConfirmEmail = () => {
     const params = useParams()
@@ -44,7 +43,6 @@ const ConfirmEmail = () => {
     return (
         <>
             <Navbar />
-            {/* {verifyUser()} */}
             {showError()}
             {showSuccess()}
             <Footer />

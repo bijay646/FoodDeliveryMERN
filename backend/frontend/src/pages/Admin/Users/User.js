@@ -28,11 +28,11 @@ const User = () => {
                          <AdminSidebar users />
                     </div>
                     <div className="col-md-9 p-5 text-start">
-                         <div className="d-flex justify-content-between w-50">
+                         <div className="d-flex justify-content-between w-75">
                               <h3>Users</h3>
                          </div>
                          <div className="container">
-                              <table className="table table-hover table-striped text-center p-3 my-5 shadow-sm w-50">
+                              <table className="table table-hover table-striped text-center p-3 my-5 shadow-sm w-75">
                                    <thead>
                                         <tr>
                                              <th>S.No.</th>

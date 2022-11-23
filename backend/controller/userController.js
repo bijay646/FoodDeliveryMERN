@@ -1,16 +1,18 @@
 const User = require('../models/userModel')
 const Token = require('../models/tokenModel')
 const crypto = require('crypto')
-const { sendEmail } = require('../utils/sendEmail')
 const jwt = require('jsonwebtoken')
 const {expressjwt} = require('express-jwt')
+const { sendEmail } = require('../utils/sendEmail')
+
+
 
 exports.addUser = async (req, res) => {
     const { username, email, password } = req.body
     // check email if already registered
     let user = await User.findOne({ email: email })
     if (!user) {
-        // if user is not found, create user
+        // if user is not found, create new user
         let user = new User({
             username: username,
             email: email,
@@ -40,17 +42,16 @@ exports.addUser = async (req, res) => {
         if (!user) {
             return res.status(400).json({ error: "Something went wrong" })
         }
-        res.send(user)
+        return res.send(user)
     }
     else {
         // if user is found, return error
         return res.status(400).json({ error: "User/Email already exists" })
     }
-
-
 }
 
-// user confirmation/verification
+
+// user verification
 exports.userConfirmation = async (req, res) => {
     const token = await Token.findOne({ token: req.params.token })
     if (!token) {
@@ -67,10 +68,11 @@ exports.userConfirmation = async (req, res) => {
     user = await user.save()
 
     if (!user) {
-        res.status(400).json({ error: "something went wrong" })
+        return res.status(400).json({ error: "something went wrong" })
     }
-    res.status(200).json({ message: "User verified successfully." })
+    return res.status(200).json({ message: "User verified successfully." })
 }
+
 
 // resend confirmation
 exports.resendConfirmation = async (req, res) => {
@@ -93,9 +95,7 @@ exports.resendConfirmation = async (req, res) => {
         return res.status(400).json({ error: "something went wrong" })
     }
     // send token in email
-    // const url = `http://localhost:5000/api/verifyUser/${token.token}`
     const url = `http://localhost:3000/confirmEmail/${token.token}`
-
     sendEmail({
         from: "noreply@something.com",
         to: user.email,
@@ -107,9 +107,10 @@ exports.resendConfirmation = async (req, res) => {
     res.status(200).json({ message: "Verication email has been sent to your email." })
 }
 
+
 // forget password
 exports.forgetpassword = async (req, res) => {
-    //check email if registered or not
+    //check if email is registered or not
     let user = await User.findOne({ email: req.body.email })
     if (!user) {
         return res.status(400).json({ error: "User/Email does not exist. Please register" })
@@ -137,7 +138,8 @@ exports.forgetpassword = async (req, res) => {
     return res.status(200).json({message:"Password reset link has been sent to your email."})
 }
 
-// resetpassword
+
+//to reset password
 exports.resetPassword = async(req, res) => {
     let token = await Token.findOne({token:req.params.token})
     if(!token){
@@ -155,13 +157,14 @@ exports.resetPassword = async(req, res) => {
     res.status(200).json({message:"Password reset successfully."})
 }
 
+
 // signin process
 exports.signIn = async(req, res) => {
     const {email, password} = req.body
     // check if email exists or not
     let user = await User.findOne({email: email})
     if(!user){
-        return res.status(400).json({error: "Email/User does not exist. Please register"})
+        return res.status(400).json({error: "Email/User does not exist. Please register first."})
     }
     // check if email and password match or not
     if(!user.authenticate(password)){
@@ -169,7 +172,7 @@ exports.signIn = async(req, res) => {
     }
     // check if user is verified or not
     if(!user.isVerified){
-        return res.status(400).json({error: "User not verified. Verify your account to contiue"})
+        return res.status(400).json({error: "User not verified. Verify your account to contiue."})
     }
     // generate jwt 
     const token = jwt.sign({_id: user._id, role: user.role}, process.env.JWT_SECRET)
@@ -184,7 +187,7 @@ exports.signIn = async(req, res) => {
 // signout
 exports.signOut = (req, res) => {
     res.clearCookie('myCookie')
-    return res.status(200).json({message:"Signed out successfully"})
+    return res.status(200).json({message:"Signed out successfully."})
 }
 
 // authorization
@@ -200,18 +203,16 @@ exports.updateUser = async (req, res) => {
         {
             email: req.body.email, 
             username: req.body.username,
-            // password: req.body.password,
-            // role: req.body.role, 
-            // isVerified: req.body.isVeriried
         },
         {
             new:true
         })
         if(!user){
-            return res.status(400).json({error:"failed to update user"})
+            return res.status(400).json({error:"failed to update user."})
         }
         res.send(user)
 }
+
 
 // deleteUser
 exports.deleteUser = (req, res) => {
@@ -221,17 +222,18 @@ exports.deleteUser = (req, res) => {
             return res.status(400).json({error:"User not found."})
         }
         else{
-            return res.status(200).json({message:"User deleted successfully"})
+            return res.status(200).json({message:"User deleted successfully."})
         }
     })
     .catch(error=>res.status(400).json({error:error}))
 }
 
+
 // view user list
 exports.userList = async(req, res) => {
     let users = await User.find()
     if(!users){
-        return res.status(400).json({error:"Something went wrong"})
+        return res.status(400).json({error:"Something went wrong."})
     }
     res.send(users)
 }
@@ -240,7 +242,7 @@ exports.userList = async(req, res) => {
 exports.userDetails = async(req,res) => {
     let user = await User.findById(req.params.id)
     if(!user){
-        return res.status(400).json({error:"Something went wrong"})
+        return res.status(400).json({error:"Something went wrong."})
     }
     res.send(user)
 }

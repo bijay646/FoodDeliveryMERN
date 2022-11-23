@@ -8,6 +8,7 @@ const UserRoute = require('./route/userRoute')
 const CategoryRoute = require('./route/categoryRoute')
 const FoodRoute = require('./route/foodRoute')
 const OrderRoute = require('./route/orderRoute')
+const PaymentRoute = require('./route/paymentRoute')
 
 
 const app = express()
@@ -22,12 +23,12 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 
-
 //routes
 app.use('/api',CategoryRoute)
 app.use('/api',FoodRoute)
 app.use('/api',UserRoute)
 app.use('/api',OrderRoute)
+app.use('/api',PaymentRoute)
 app.use('/api/public/uploads', express.static('public/uploads'))
 
 

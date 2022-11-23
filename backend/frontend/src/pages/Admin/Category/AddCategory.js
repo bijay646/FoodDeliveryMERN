@@ -51,7 +51,7 @@ const AddCategory = () => {
                     </h3>
                     <Link to= '/admin/category' className='btn btn-primary'>Go Back</Link>
                     </div>
-                    <form className='m-5 p-5 shadow-lg w-50 mx-auto'>
+                    <form className='m-5 p-5 shadow w-50 mx-auto'>
                         {showError()}
                         {showSuccess()}
                         <label htmlFor='category_name'>Category Name:</label>

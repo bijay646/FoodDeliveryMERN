@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { resetPassword } from '../api/userAPI'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { resetPassword } from '../api/userAPI'
+
 
 const ResetPassword = () => {
     const [password, setPassword] = useState('')
@@ -39,14 +40,13 @@ const ResetPassword = () => {
             {showSuccess()}
             {
                 !success &&
-                <form className='my-5 w-50 mx-auto p-5 shadow-lg'>
+                <form className='my-5 w-25 mx-auto p-5 shadow'>
                     <label htmlFor='pwd'>New Password:</label>
                     <input type={'text'} id='pwd' className='form-control' onChange={e => setPassword(e.target.value)} />
-                    <button className='btn btn-warning mt-3' onClick={handleSubmit}>Forget Password</button>
+                    <button className='btn btn-warning mt-3' onClick={handleSubmit}>Change Password</button>
                 </form>
             }
             <Footer />
-
         </>
     )
 }

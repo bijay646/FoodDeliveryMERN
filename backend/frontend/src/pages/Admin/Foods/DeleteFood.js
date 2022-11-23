@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
-import AdminSidebar from '../AdminSidebar'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { API } from '../../../config'
 import { isAuthenticated } from '../../../api/userAPI'
 import { deleteFood, viewfoodDetails } from '../../../api/foodAPI'
+import AdminSidebar from '../AdminSidebar'
 
 
 const DeleteFood = () => {
@@ -69,12 +69,12 @@ const DeleteFood = () => {
                 <div className='col-md-9 p-5 text-start'>
                     <div className='d-flex justify-content-between w-75 mb-5'>
                         <h3>
-                            food Delete
+                            Delete Food Item
                         </h3>
                         <Link to='/admin/foods' className='btn btn-primary'>GO BACK</Link>
 
                     </div>
-                    <div className='container d-flex shadow-sm'>
+                    <div className='container d-flex shadow'>
                         <div className='p-5 my-5 border-end border-3 text-center'>
                             <h2 className='text-center text-decoration-underline'>food Details</h2>
                             <hr className='my-3'></hr>

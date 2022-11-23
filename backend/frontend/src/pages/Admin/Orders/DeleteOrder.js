@@ -45,7 +45,7 @@ const DeleteOrder = () => {
                     <div className='col-md-9 p-5 text-start'>
                          <div className='d-flex justify-content-between w-75 mb-5'>
                               <h3>
-                                  Order Delete
+                                  Delete Order
                               </h3>
                               <Link to='/admin/orders' className='btn btn-primary'>GO BACK</Link>
 

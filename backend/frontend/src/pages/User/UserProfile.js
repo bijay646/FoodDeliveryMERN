@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { isAuthenticated, updateUser } from "../../api/userAPI";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Link} from "react-router-dom";
+import { isAuthenticated, updateUser } from "../../api/userAPI";
 import { myOrders } from "../../redux/actions/orderActions";
 import './userprofile.css'
+
 
 const UserProfile = () => {
   const { user, token } = isAuthenticated();

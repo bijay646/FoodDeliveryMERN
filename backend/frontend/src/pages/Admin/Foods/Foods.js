@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
-import AdminSidebar from '../AdminSidebar'
 import { Link } from 'react-router-dom'
 import { API } from '../../../config'
 import { getFoods} from '../../../api/foodAPI'
+import AdminSidebar from '../AdminSidebar'
+
 
 const Foods = () => {
     const [foods, setfoods] = useState([])
@@ -71,8 +72,6 @@ const Foods = () => {
                 </tbody>
             </table>
             </div>
-
-
         </div>
     </div>
 

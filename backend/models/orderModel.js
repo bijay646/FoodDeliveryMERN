@@ -16,9 +16,9 @@ const orderSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    specialInstruction:{
+    paymentMethod:{
         type:String,
-        required:false
+        required:true
     },
     city:{
         type: String,

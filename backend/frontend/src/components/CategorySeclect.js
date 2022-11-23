@@ -18,7 +18,6 @@ const CategorySeclect = ({ handleFilter }) => {
     }, [])
 
     const handleChange = (e) => {
-        // e.preventDefault()
         handleFilter(e.target.value)
     }
     return (

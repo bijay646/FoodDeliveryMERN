@@ -14,12 +14,12 @@ const FoodModal = ({ foodDetail }) => {
 
      const addOnCart = () => {
           dispatch(addToBag(foodDetail._id,qty))
-          toast.success("Item added to cart")
+          toast.success("food added in bag")
      }
 
      return (
           <>
-               <ToastContainer position='top-right' autoClose={1000} />
+                <ToastContainer position='top-right' autoClose={1000} />
                <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered mx-auto">
                          <div className="modal-content">
@@ -49,7 +49,7 @@ const FoodModal = ({ foodDetail }) => {
 
                                    </div>
                                    <div className='col-6'>
-                                        {user &&qty > 0 ?
+                                        {user &&user.role===0 &&qty > 0 ?
                                              <button className='btn btn-warning mt-2 w-100' onClick={addOnCart}>Add to bag</button> :
                                              <button className='btn btn-warning mt-2 1-100' disabled onClick={addOnCart}>Add to bag</button>
                                         }

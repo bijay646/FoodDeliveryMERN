@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
-import AdminSidebar from '../AdminSidebar'
 import { Link, useNavigate } from 'react-router-dom'
 import { getCategories } from '../../../api/categoryAPI'
 import { addFood} from '../../../api/foodAPI'
 import { isAuthenticated } from '../../../api/userAPI'
+import AdminSidebar from '../AdminSidebar'
 
 
 const AddFood = () => {
@@ -85,13 +85,13 @@ const AddFood = () => {
         <div className='col-md-9 p-5 text-start'>
             <div className='d-flex justify-content-between w-75'>
                 <h3>
-                    Add Food
+                    Add Food Item
                 </h3>
                 <Link to='/admin/foods' className='btn btn-primary'>Go Back</Link>
 
             </div>
             <div className='container'>  
-            <form className='p-5 shadow-lg mt-5 w-75'>
+            <form className='p-5 shadow mt-5 w-75'>
                 {showError()}
                 {showSuccess()}
                 <label htmlFor='food_name'>Food Name</label>

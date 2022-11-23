@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { forgetpassword } from '../api/userAPI'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { forgetpassword } from '../api/userAPI'
+
 
 const ForgetPassword = () => {
     const [email, setEmail] = useState('')
@@ -33,7 +34,6 @@ const ForgetPassword = () => {
         }
     }
 
-
     return (
         <>
             <Navbar />
@@ -41,7 +41,7 @@ const ForgetPassword = () => {
             {showSuccess()}
             {
                 !success &&
-                <form className='my-5 w-50 mx-auto p-5 shadow-lg'>
+                <form className='my-5 w-25 mx-auto p-5 shadow'>
                     <label htmlFor='email'>Email Address:</label>
                     <input type={'text'} id='email' className='form-control' onChange={e => setEmail(e.target.value)} />
                     <button className='btn btn-warning mt-3' onClick={handleSubmit}>Forget Password</button>

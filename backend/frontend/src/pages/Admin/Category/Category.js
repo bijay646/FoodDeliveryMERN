@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getCategories } from '../../../api/categoryAPI'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
+import { getCategories } from '../../../api/categoryAPI'
 import AdminSidebar from '../AdminSidebar'
+
 
 const Category = () => {
     const [categories, setCategories] = useState([])

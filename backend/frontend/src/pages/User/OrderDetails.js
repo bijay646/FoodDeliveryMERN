@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { isAuthenticated } from '../../api/userAPI'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
 import OrderCard from '../../components/OrderCard'
+import { isAuthenticated } from '../../api/userAPI'
 import { orderDetails } from '../../redux/actions/orderActions'
 
 

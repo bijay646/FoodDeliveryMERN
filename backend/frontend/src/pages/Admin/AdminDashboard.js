@@ -14,9 +14,7 @@ const AdminDashboard = () => {
                 <div className='col-md-9'>
                 </div>
             </div>
-
         <Footer/>
-
     </>
   )
 }

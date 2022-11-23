@@ -19,7 +19,6 @@ const OrderInfo = () => {
      }, [])
 
      const order = useSelector(state => state.orderDetails.order)
-     console.log(order)
      return (
           <>
                <Navbar />
@@ -42,17 +41,17 @@ const OrderInfo = () => {
 
                          <div className='row my-5'>
                               <div className='col-6 text-start'>
-                                   <h4>Order Id:  {order._id}</h4>
-                                   <h4>Ordered By:  {order.user.username}</h4>
-                                   <h4>Total Price:  Rs.{order.totalAmount}</h4>
-                                   <h4>Status:  {order.status}</h4>
+                                   <h4>Order Id:  <span className='text-success fs-5'>{order._id}</span></h4>
+                                   <h4>Ordered By:  <span className='text-success fs-5'>{order.user.username}</span></h4>
+                                   <h4>Total Price:  Rs.<span className='text-success fs-5'>{order.totalAmount}</span></h4>
+                                   <h4>Payment Method:<span className='text-success fs-5'>{order.paymentMethod}</span></h4>
+                                   <h4>Status:  <span className='text-success fs-5'>{order.status}</span></h4>
                               </div>
                               <div className='col-6 text-start'>
                                    <h3>Delivery Address:</h3>
-
-                                   <h4>City:  {order.city}</h4>
-                                   <h4>Tole:  {order.tole}</h4>
-                                   <h4>Phone:  {order.phone}</h4>
+                                   <h4>City:  <span className='text-success fs-5'>{order.city}</span></h4>
+                                   <h4>Tole:  <span className='text-success fs-5'>{order.tole}</span></h4>
+                                   <h4>Phone:  <span className='text-success fs-5'>{order.phone}</span></h4>
                               </div>
                          </div>
 

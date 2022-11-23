@@ -115,7 +115,6 @@ export const updateUser = (id,email,username, token) => {
 
 
 
-
 //to delete a user
 export const deleteUser = (id,token)=>{
     return fetch(`${API}/deleteuser/${id}`,{

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../../../components/Footer'
 import Navbar from '../../../components/Navbar'
-import AdminSidebar from '../AdminSidebar'
+import { API } from '../../../config'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { updateFood, viewfoodDetails } from '../../../api/foodAPI'
-import { API } from '../../../config'
 import { isAuthenticated } from '../../../api/userAPI'
+import AdminSidebar from '../AdminSidebar'
+
 
 const UpdateFood = () => {
     const [food, setfood] = useState({
@@ -79,7 +80,7 @@ const UpdateFood = () => {
                         <Link to='/admin/foods' className='btn btn-primary'>Go Back</Link>
 
                     </div>
-                    <div className='container d-flex shadow-lg '>
+                    <div className='container d-flex shadow'>
                         <div className='p-5 my-5 border-end border-3 text-center'>
                             <h2 className='text-center text-decoration-underline'>Food Details</h2>
                             <hr className='my-3'></hr>
@@ -106,8 +107,6 @@ const UpdateFood = () => {
 
                         </form>
                     </div>
-
-
                 </div>
             </div>
 
