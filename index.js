@@ -1,6 +1,6 @@
 const express = require('express')
 require('dotenv').config()
-const db = require('./database/connection')
+require('./database/connection')
 const cors = require('cors')
 const path= require('path')
 const morgan = require('morgan')
