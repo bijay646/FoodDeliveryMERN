@@ -29,7 +29,7 @@ exports.addUser = async (req, res) => {
             return res.status(400).json({ error: "something went wrong" })
         }
        
-        const url = `http://localhost:3000/confirmEmail/${token.token}`
+        const url = `${process.env.FRONTEND_URL}/confirmEmail/${token.token}`
         sendEmail({
             from: "noreply@something.com",
             to: email,
@@ -95,7 +95,7 @@ exports.resendConfirmation = async (req, res) => {
         return res.status(400).json({ error: "something went wrong" })
     }
     // send token in email
-    const url = `http://localhost:3000/confirmEmail/${token.token}`
+    const url = `${process.env.FRONTEND_URL}/confirmEmail/${token.token}`
     sendEmail({
         from: "noreply@something.com",
         to: user.email,
