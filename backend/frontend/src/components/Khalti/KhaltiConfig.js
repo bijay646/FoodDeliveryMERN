@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API } from "../../config"
+// import axios from "axios";
+// import { API } from "../../config"
 
 
 let config = {

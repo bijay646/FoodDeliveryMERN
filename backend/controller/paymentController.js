@@ -15,19 +15,18 @@ exports.verifyPayment = async (req, res) => {
     };
 
     let config = {
-        headers: { 'Authorization': process.env.SECRET_KEY }
+        headers: { 'Authorization':'Key'+ process.env.SECRET_KEY }
     };
     console.log("hello this is checkpoint")
     console.log(req.body.token, req.body.amount)
     console.log(process.env.SECRET_KEY)
 
-    axios.post("https://khalti.com/api/v2/payment/verify/", data, config)
+    await axios.post("https://khalti.com/api/v2/payment/verify/", data, config)
         .then(response => {
             console.log(response.data);
         })
         .catch(error => {
             console.log(error);
         });
-   
 
 }

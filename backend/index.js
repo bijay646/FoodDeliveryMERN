@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const db = require('./database/connection')
 const cors = require('cors')
+const morgan = require('morgan')
 
 //importing routes
 const UserRoute = require('./route/userRoute')
@@ -20,6 +21,7 @@ var corOptions = {
 //middleware
 app.use(cors(corOptions))
 app.use(express.json())
+app.use(morgan('dev'))
 app.use(express.urlencoded({extended: true}))
 
 
