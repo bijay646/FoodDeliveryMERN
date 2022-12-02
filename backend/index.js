@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const db = require('./database/connection')
 const cors = require('cors')
+const path= require('path')
 const morgan = require('morgan')
 
 //importing routes
@@ -32,6 +33,13 @@ app.use('/api',UserRoute)
 app.use('/api',OrderRoute)
 app.use('/api',PaymentRoute)
 app.use('/api/public/uploads', express.static('public/uploads'))
+
+app.use(express.static(path.join(__dirname, "./frontend/build")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+});
+
 
 
 const PORT = process.env.PORT || 5000
