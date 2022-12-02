@@ -16,13 +16,14 @@ const PaymentRoute = require('./route/paymentRoute')
 
 
 const app = express()
-var corOptions = {
-     origin:"http://localhost:3000"
-}
+// var corOptions = {
+//      origin:"http://localhost:3000"
+// }
 
 
 //middleware
-app.use(cors(corOptions))
+// app.use(cors(corOptions))
+app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: true}))
