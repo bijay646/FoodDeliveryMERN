@@ -5,6 +5,8 @@ const cors = require('cors')
 const path= require('path')
 const morgan = require('morgan')
 
+
+
 //importing routes
 const UserRoute = require('./route/userRoute')
 const CategoryRoute = require('./route/categoryRoute')
